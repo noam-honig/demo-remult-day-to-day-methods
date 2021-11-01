@@ -4,8 +4,8 @@ import { Entity, Field, IdEntity, Validators } from "remult";
 export class DemoValidatorsEntity extends IdEntity {
     @Field<DemoValidatorsEntity, string>({
         validate: (self, col) => {
-            if (self.a=='')
-                self.$.a.error = "bbbb";
+            if (col.value=='')
+                col.error = "bbbb";
         }
     })
     a: string = '';
