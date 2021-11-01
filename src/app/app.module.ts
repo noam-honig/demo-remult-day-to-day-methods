@@ -26,6 +26,7 @@ import { AdminGuard } from './users/roles';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMotiEntityComponent } from './demo-moti-entity/demo-moti-entity.component';
 import { DemoValidatorsComponent } from './demo-validators/demo-validators.component';
+import { EntityRelationsComponent } from './entity-relations/entity-relations.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DemoValidatorsComponent } from './demo-validators/demo-validators.compo
     YesNoQuestionComponent,
     InputAreaComponent,
     DemoMotiEntityComponent,
-    DemoValidatorsComponent
+    DemoValidatorsComponent,
+    EntityRelationsComponent
   ],
   imports: [
     BrowserModule,

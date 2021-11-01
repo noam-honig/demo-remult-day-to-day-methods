@@ -12,10 +12,12 @@ import { AuthService } from './auth.service';
 import { terms } from './terms';
 import { DemoMotiEntityComponent } from './demo-moti-entity/demo-moti-entity.component';
 import { DemoValidatorsComponent } from './demo-validators/demo-validators.component';
+import { EntityRelationsComponent } from './entity-relations/entity-relations.component';
 
 const defaultRoute = terms.home;
 const routes: Routes = [
   { path: defaultRoute, component: HomeComponent },
+  { path: "relations", component: EntityRelationsComponent },
   { path: "moti-entity", component: DemoMotiEntityComponent },
   { path: 'demo-validators', component: DemoValidatorsComponent },
   { path: terms.userAccounts, component: UsersComponent, canActivate: [AdminGuard] },
