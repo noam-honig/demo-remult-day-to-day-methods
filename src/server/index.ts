@@ -14,6 +14,8 @@ import * as jwt from 'express-jwt';
 import * as compression from 'compression';
 import '../app/app.module';
 import { getJwtTokenSignKey } from '../app/auth.service';
+import { Users } from '../app/users/users';
+import { Roles } from '../app/users/roles';
 
 async function startup() {
     config(); //loads the configuration from the .env file
@@ -32,11 +34,26 @@ async function startup() {
         return undefined;
     }
     let api = remultExpress({
+        bodySizeLimit:'100mb',
         dataProvider
     });
     app.use(api);
     app.use('/api/docs', swaggerUi.serve,
         swaggerUi.setup(api.openApiDoc({ title: 'remult-react-todo' })));
+
+
+
+
+    app.get("/api/moti", async (req, res) => {
+        let remult = await api.getRemult(req);
+        res.send({
+            message: "hi" + await remult.repo(Users).count(),
+            username: remult.user.name,
+            admin: remult.isAllowed(Roles.admin)
+        });
+    });
+
+
 
     const { schema, rootValue } = remultGraphql(api);
     if (process.env.NODE_ENV !== "production")
