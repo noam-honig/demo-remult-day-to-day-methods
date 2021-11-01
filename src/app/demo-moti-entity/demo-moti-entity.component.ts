@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GridSettings } from '@remult/angular';
+import { Remult } from 'remult';
+import { Products } from './products';
 
 @Component({
   selector: 'app-demo-moti-entity',
@@ -7,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoMotiEntityComponent implements OnInit {
 
-  constructor() { }
+  constructor(private remult: Remult) { }
+  grid = new GridSettings(this.remult.repo(Products), { allowCrud: true });
 
   ngOnInit(): void {
   }
