@@ -6,7 +6,15 @@ const myValidation = (_: any, col: FieldRef<any, string>) => {
 }
 const myRequired = Validators.required.withMessage("שדה חובה");
 
-@Entity("demovalidatorsentity", { allowApiCrud: true })
+@Entity<DemoValidatorsEntity>("demovalidatorsentity", {
+    allowApiCrud: true,
+    validation: self => {
+        if (1 == 1)
+            self._.error = "entity error";
+        if (self.a != self.b)
+            self.$.b.error = "doesn't match a";
+    }
+})
 export class DemoValidatorsEntity extends IdEntity {
     @Field<DemoValidatorsEntity, string>({
         validate: myRequired
