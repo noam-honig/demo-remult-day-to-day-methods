@@ -1,1 +1,8 @@
+<ng-container *ngIf="grid.currentRow">
+    <input [(ngModel)]="grid.currentRow.a">
+    <button (click)="grid.currentRow.save()">save</button>
+    <div style="color:red">
+        {{grid.currentRow.$.a.error}}
+    </div>
+</ng-container>
 <data-grid [settings]="grid"></data-grid>
