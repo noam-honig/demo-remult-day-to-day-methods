@@ -10,16 +10,31 @@ import { Order, OrderDetail, Product } from './model';
 export class EntityRelationsComponent implements OnInit {
 
   constructor(private remult: Remult) { }
-  details = [] as OrderDetail[];
+  orders = [] as Order[];
   async ngOnInit() {
     await this.createSomeProducts();
     console.clear();
-    this.details = await this.remult.repo(OrderDetail).find();
-
-
+    this.orders = await this.remult.repo(Order).find();
+    for (const o of this.orders) {
+      console.log({
+        num: o.num,
+        items: o.details.items
+      })
+    }
+    await new Promise((res) => {
+      setTimeout(() => {
+        res({})
+      }, 45);
+    });
+    for (const o of this.orders) {
+      console.log({
+        num: o.num,
+        items: o.details.items
+      })
+    }
   }
   async createSomeProducts() {
-    
+    return;
     let repo = this.remult.repo(Product);
     let prods = [] as Product[];
     for (const prod of ["Beer", "Bread", "Wine"]) {
@@ -34,17 +49,20 @@ export class EntityRelationsComponent implements OnInit {
       where: o => o.num.isEqualTo(1),
       createIfNotFound: true
     })).save();
+    let order2 = await (await this.remult.repo(Order).findFirst({
+      where: o => o.num.isEqualTo(2),
+      createIfNotFound: true
+    })).save();
 
     let odRepo = this.remult.repo(OrderDetail);
     for (const od of await odRepo.find()) {
       await od.delete();
     }
 
-     await odRepo.create({
-      order: order.id,
+    await (await order.details.create({
       product: prods[0],
       quantity: 5
-    }).save();
+    })).save();
     await odRepo.create({
       order: order.id,
       product: prods[0],
@@ -55,7 +73,16 @@ export class EntityRelationsComponent implements OnInit {
       product: prods[0],
       quantity: 7
     }).save();
-    
+
+    await (await order2.details.create({
+      quantity: 2,
+      product: prods[2]
+    })).save();
+    await (await order2.details.create({
+      quantity: 4,
+      product: prods[1]
+    })).save();
+
 
 
   }

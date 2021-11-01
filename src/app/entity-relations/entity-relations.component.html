@@ -1,5 +1,8 @@
 <ul>
-    <li *ngFor="let od of details">
-        {{od.quantity}} X {{od.product.name}}
+    <li *ngFor="let o of orders">
+        {{o.num}}
+        <!-- <ul *ngFor="let od of o.details.items">
+            {{od.quantity}} X {{od.product.name}}
+        </ul> -->
     </li>
 </ul>
