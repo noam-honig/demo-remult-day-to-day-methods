@@ -1,7 +1,9 @@
-import { Entity, Field, IdEntity } from "remult";
+import { Entity, Field, IdEntity, Validators } from "remult";
 
 @Entity("demovalidatorsentity", { allowApiCrud: true })
 export class DemoValidatorsEntity extends IdEntity {
-    @Field()
+    @Field({
+        validate:Validators.required
+    })
     a: string = '';
 }
