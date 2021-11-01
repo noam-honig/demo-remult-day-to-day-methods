@@ -10,6 +10,15 @@ export class Product extends IdEntity {
 export class Order extends IdEntity {
     @Field()
     num: number = 0;
+    @Field()
+    stam!: {
+        firstName: string,
+        lastName: string
+    }
+    @Field()
+    stamArray!: {
+        name: string
+    }[];
 
     details = new OneToMany(this.remult.repo(OrderDetail), {
         where: od => od.order.isEqualTo(this.id)

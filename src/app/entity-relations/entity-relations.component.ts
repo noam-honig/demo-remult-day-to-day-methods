@@ -15,26 +15,9 @@ export class EntityRelationsComponent implements OnInit {
     await this.createSomeProducts();
     console.clear();
     this.orders = await this.remult.repo(Order).find();
-    for (const o of this.orders) {
-      console.log({
-        num: o.num,
-        items: o.details.items
-      })
-    }
-    await new Promise((res) => {
-      setTimeout(() => {
-        res({})
-      }, 45);
-    });
-    for (const o of this.orders) {
-      console.log({
-        num: o.num,
-        items: o.details.items
-      })
-    }
   }
   async createSomeProducts() {
-    return;
+
     let repo = this.remult.repo(Product);
     let prods = [] as Product[];
     for (const prod of ["Beer", "Bread", "Wine"]) {
@@ -49,6 +32,13 @@ export class EntityRelationsComponent implements OnInit {
       where: o => o.num.isEqualTo(1),
       createIfNotFound: true
     })).save();
+    order.stam = {
+      firstName: 'noam',
+      lastName: 'honig'
+    }
+    order.stamArray = [{ name: 'noam' }, { name: 'moti' }];
+    await order.save();
+
     let order2 = await (await this.remult.repo(Order).findFirst({
       where: o => o.num.isEqualTo(2),
       createIfNotFound: true

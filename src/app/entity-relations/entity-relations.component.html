@@ -1,8 +1,8 @@
 <ul>
     <li *ngFor="let o of orders">
-        {{o.num}}
-        <!-- <ul *ngFor="let od of o.details.items">
-            {{od.quantity}} X {{od.product.name}}
-        </ul> -->
+        {{o.num}} {{o.stam?.firstName}}
+         <ul *ngFor="let od of o.stamArray">
+            {{od.name}} 
+        </ul> 
     </li>
 </ul>
