@@ -25,6 +25,7 @@ import { DialogService } from './common/dialog';
 import { AdminGuard } from './users/roles';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMotiEntityComponent } from './demo-moti-entity/demo-moti-entity.component';
+import { DemoValidatorsComponent } from './demo-validators/demo-validators.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DemoMotiEntityComponent } from './demo-moti-entity/demo-moti-entity.com
     HomeComponent,
     YesNoQuestionComponent,
     InputAreaComponent,
-    DemoMotiEntityComponent
+    DemoMotiEntityComponent,
+    DemoValidatorsComponent
   ],
   imports: [
     BrowserModule,

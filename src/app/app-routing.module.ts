@@ -11,13 +11,15 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
 import { terms } from './terms';
 import { DemoMotiEntityComponent } from './demo-moti-entity/demo-moti-entity.component';
+import { DemoValidatorsComponent } from './demo-validators/demo-validators.component';
 
 const defaultRoute = terms.home;
 const routes: Routes = [
   { path: defaultRoute, component: HomeComponent },
   { path: "moti-entity", component: DemoMotiEntityComponent },
+  { path: 'demo-validators', component: DemoValidatorsComponent },
   { path: terms.userAccounts, component: UsersComponent, canActivate: [AdminGuard] },
-  { path: '**', redirectTo: '/'+defaultRoute, pathMatch: 'full' }
+  { path: '**', redirectTo: '/' + defaultRoute, pathMatch: 'full' }
 
 ];
 
