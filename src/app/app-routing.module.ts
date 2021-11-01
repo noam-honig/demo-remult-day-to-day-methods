@@ -10,10 +10,12 @@ import { ShowDialogOnErrorErrorHandler } from './common/dialog';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
 import { terms } from './terms';
+import { DemoMotiEntityComponent } from './demo-moti-entity/demo-moti-entity.component';
 
 const defaultRoute = terms.home;
 const routes: Routes = [
   { path: defaultRoute, component: HomeComponent },
+  { path: "moti-entity", component: DemoMotiEntityComponent },
   { path: terms.userAccounts, component: UsersComponent, canActivate: [AdminGuard] },
   { path: '**', redirectTo: '/'+defaultRoute, pathMatch: 'full' }
 

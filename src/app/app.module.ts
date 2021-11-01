@@ -24,6 +24,7 @@ import { InputAreaComponent } from './common/input-area/input-area.component';
 import { DialogService } from './common/dialog';
 import { AdminGuard } from './users/roles';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoMotiEntityComponent } from './demo-moti-entity/demo-moti-entity.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UsersComponent,
     HomeComponent,
     YesNoQuestionComponent,
-    InputAreaComponent
+    InputAreaComponent,
+    DemoMotiEntityComponent
   ],
   imports: [
     BrowserModule,
